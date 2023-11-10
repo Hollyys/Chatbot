@@ -4,7 +4,6 @@ import PgVector
 
 application = Flask(__name__)
 
-
 @application.route("/")
 def hello():
     return render_template("hello.html")
@@ -18,9 +17,10 @@ def qna():
     question = request.args.get("question")
 
     print(question)
+    
 
     return redirect(url_for("hello"))
 
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', port=5500, debug = True)
+    application.run(host='0.0.0.0', port=8080, debug = True)
