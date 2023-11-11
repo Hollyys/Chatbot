@@ -1,35 +1,29 @@
-from flask import Flask, render_template, request, redirect, url_for
-# import db_connect
-# from LLM import first_chatbot
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+# text-bison을 사용하여 결과값을 반환하는 test.py 파일의 test Class 임포트
 from test import test
 
-application = Flask(__name__)
+app = Flask(__name__)
+CORS(app)
 
-@application.route("/")
-def hello():
-    # instance_connection_name = "esoteric-stream-399606:asia-northeast3:wjdfoek3"
-    # db_user = "postgres"
-    # db_pass = "pgvectorwjdfo"
-    # db_name = "pgvector"
-    # vdb = db_connect(instance_connection_name, db_user, db_pass, db_name)
+question_history = []
 
-    return render_template("hello.html")
+@app.route('/', methods=['GET', 'POST'])
+def start():
+    if request.method == 'GET':
+        return jsonify({"question_history": question_history})
 
-@application.route("/chat")
-def chat():
-    return render_template("chat.html")
+    if request.method == 'POST':
+        data = request.json
+        question = data.get("question")
+        question_history.append(question)
 
-@application.route("/qna")
-def qna():
-    question = request.args.get("question")
-    # sep = first_chatbot("esoteric-stream-399606", "us-central1")
-    # lec, prof, query_question = sep.separate(question)
-    chatbot = test()
-    output = chatbot.service(question)
-    print(output)
+        chatbot = test()
+        answer = chatbot.service(question)
 
-    return redirect(url_for("hello"))
+        
+        response_data = {"question": question, "answer": answer}
+        return jsonify(response_data)
 
-
-if __name__ == "__main__":
-    application.run(host='0.0.0.0', port=8080, debug = True)
+if __name__ == '__main__':
+    app.run(port = 5000)
