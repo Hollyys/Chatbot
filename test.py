@@ -1,6 +1,6 @@
 import os 
 # path = '/Users/crossrunway/Flask/Chatbot/valiant-imagery-399603-80f2300bb884.json'
-path = 'Chatbot/valiant-imagery-399603-80f2300bb884.json'
+path = '/home/crossrunway01/Chatbot/valiant-imagery-399603-80f2300bb884.json'
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path
 
 import sys
