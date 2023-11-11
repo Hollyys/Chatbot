@@ -29,5 +29,4 @@ def start():
         return jsonify(response_data)
 
 if __name__ == '__main__':
-    # app.run(port = 5000)
     app.run()
