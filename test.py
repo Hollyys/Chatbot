@@ -1,3 +1,7 @@
+import os 
+path = '/Users/crossrunway/Downloads/valiant-imagery-399603-80f2300bb884.json'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path
+
 import sys
 import vertexai
 import pg8000
@@ -12,8 +16,11 @@ class test :
         return
 
     def service(self, query_text):
-        PROJECT_ID = "esoteric-stream-399606"
-        LOCATION = "us-central1"
+        # PROJECT_ID = "esoteric-stream-399606"
+        # LOCATION = "us-central1"
+
+        PROJECT_ID = "valiant-imagery-399603"
+        LOCATION = "asia-northeast3"
         vertexai.init(project=PROJECT_ID, location=LOCATION)
 
         # word embedding을 위한 함수
@@ -26,10 +33,14 @@ class test :
         model, tokenizer = get_KoSimCSE()
 
         # VectorDB 연결
-        instance_connection_name = "esoteric-stream-399606:asia-northeast3:wjdfoek3"
+        # instance_connection_name = "esoteric-stream-399606:asia-northeast3:wjdfoek3"
+        # db_user = "postgres"
+        # db_pass = "pgvectorwjdfo"
+        # db_name = "pgvector"
+        instance_connection_name = "valiant-imagery-399603:asia-northeast3:lecturetest"
         db_user = "postgres"
-        db_pass = "pgvectorwjdfo"
-        db_name = "pgvector"
+        db_pass = "porsche911gt3"
+        db_name = "postgres"
 
         # initialize Cloud SQL Python Connector object
         connector = Connector()
