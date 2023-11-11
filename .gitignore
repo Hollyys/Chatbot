@@ -1,3 +1,4 @@
+env/
 env/bin/convert-caffe2-to-onnx
 env/bin/convert-onnx-to-caffe2
 env/bin/cors
