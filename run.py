@@ -5,7 +5,7 @@ from test import test
 
 app = Flask(__name__)
 CORS(app)
-
+chatbot = test()
 question_history = []
 
 @app.route('/', methods=['GET', 'POST'])
@@ -18,10 +18,8 @@ def start():
         question = data.get("question")
         question_history.append(question)
 
-        chatbot = test()
         answer = chatbot.service(question)
 
-        
         response_data = {"question": question, "answer": answer}
         return jsonify(response_data)
 
