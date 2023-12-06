@@ -18,10 +18,20 @@ def start():
         question = data.get("question")
         question_history.append(question)
 
+<<<<<<< HEAD
         answer = chatbot.service(question)
 
+=======
+        print(question, " 수신함")
+
+        chatbot = test()
+        answer = chatbot.service(question)
+
+        print(answer, " 추출함")
+        
+>>>>>>> d8fd5352b185ee0ddd94b238addbb03fd56b0047
         response_data = {"question": question, "answer": answer}
         return jsonify(response_data)
 
 if __name__ == '__main__':
-    app.run(port = 5000)
+    app.run(debug=False, host='0.0.0.0')

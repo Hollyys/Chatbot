@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import os
 current_directory = os.getcwd()
 k = os.listdir(current_directory+"cloud api key")
 path = current_directory + "\\cloud api key\\" + k[0]
+=======
+import os 
+# path = '/Users/crossrunway/Flask/Chatbot/valiant-imagery-399603-80f2300bb884.json'
+path = '/home/crossrunway01/Chatbot/valiant-imagery-399603-80f2300bb884.json'
+>>>>>>> d8fd5352b185ee0ddd94b238addbb03fd56b0047
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path
 
 import sys
